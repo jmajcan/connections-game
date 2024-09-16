@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Game from "./components/games/Game";
 import GameList from "./components/games/GameList";
+import './i18n.js'
 
 const router = createBrowserRouter([
   {

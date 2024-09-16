@@ -56,6 +56,7 @@ export default {
         secondary: '#2C5843',
         accent: '#fcf7e2',
         neutral: '#101715',
+        light: '#f2f2f2',
         info: '#321CAD',
         success: '#2cc692',
         warning: '#e3b505',

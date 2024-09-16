@@ -3,7 +3,6 @@ import Navbar from "./components/Navbar";
 import useGameStore from "./gameStore";
 import { useEffect } from "react";
 import Footer from "./components/Footer";
-
 import './App.css';
 
 const App = () => {
@@ -12,6 +11,7 @@ const App = () => {
   useEffect(() => {
     reset();
   }, [reset]);
+
 
   return (
     <div className="App bg-light">
