@@ -32,17 +32,24 @@ const gameStore = (set, get) => ({
 	},
 	reset: () => {
 		set({
-			gameName: 'default',
-			gameQuestions: [],
+			currentGame: null,
+			allGames: [],
+			loading: false,
+			success: false,
+			error: false,
+			errorData: null,
+		});
+	},
+	resetCurrentGame: () => {
+		set({
+			currentGame: null
 		});
 	},
 	fetchAllGames: async () => {
 		set({ ...initialState, loading: true });
 		try {
-			const res = await axios.request({
-				method: "GET",
-				url: url,
-			});
+			const res = await axios.get(`${url}`);
+			console.log(`${url}`, res);
 			set({
 				...initialState,
 				success: true,
@@ -61,10 +68,7 @@ const gameStore = (set, get) => ({
 	fetchGame: async (id) => {
 		set({ ...initialState, loading: true });
 		try {
-			const res = await axios.request({
-				method: "GET",
-				url: url + id,
-			});
+			const res = await axios.get(`${url}${id}`);
 			set({
 				...initialState,
 				success: true,

@@ -6,17 +6,20 @@ import GameCard from "./GameCard";
 
 export default function GameList() {
 	const [games, setGames] = useState([]);
-	const { allGames, fetchAllGames } = useGameStore(
+	const { allGames, fetchAllGames, resetCurrentGame } = useGameStore(
 		useShallow((state) => ({
 			allGames: state.allGames,
-			fetchAllGames: state.fetchAllGames
+			fetchAllGames: state.fetchAllGames,
+			resetCurrentGame: state.resetCurrentGame,
 		}))
 	);
 
 	useEffect(() => {
+		// resetCurrentGame();
 		fetchAllGames();
-		setGames(allGames);
 	}, []);
+
+	useEffect(() => setGames(allGames), [allGames]);
 
 	// This method will map out the records on the table
 	const gamesList = () => {

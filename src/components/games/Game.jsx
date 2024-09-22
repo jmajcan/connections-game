@@ -18,8 +18,9 @@ export default function Game() {
   useEffect(() => {
     const id = params.id?.toString() || undefined;
     fetchGame(id);
-    setSelectedGame(currentGame);
   }, [params]);
+
+  useEffect(()=> setSelectedGame(currentGame), [currentGame]);
 
   return (
     <div>

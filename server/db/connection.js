@@ -1,6 +1,7 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
 
-const uri = process.env.ATLAS_URI || "";
+const uri = process.env.VITE_ATLAS_URI || "";
+
 const client = new MongoClient(uri, {
   serverApi: {
     version: ServerApiVersion.v1,
@@ -21,6 +22,6 @@ try {
   console.error(err);
 }
 
-let db = client.db(process.env.DATABASE_NAME);
+let db = client.db(process.env.VITE_DATABASE_NAME);
 
 export default db;
