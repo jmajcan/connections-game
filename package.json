@@ -7,16 +7,21 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "node --env-file=.env server/server"
   },
   "dependencies": {
+    "@react-spring/web": "^9.5.5",
     "@reduxjs/toolkit": "^2.2.7",
     "axios": "^1.7.7",
+    "clsx": "^2.1.1",
     "i18next": "^23.15.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-i18next": "^15.0.2",
+    "react-tinder-card": "^1.6.4",
     "redux": "^5.0.1",
+    "tailwind-override": "^0.6.1",
     "zustand": "^4.5.5"
   },
   "devDependencies": {

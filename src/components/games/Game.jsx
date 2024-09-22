@@ -1,50 +1,34 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-
+import { useShallow } from 'zustand/react/shallow'
+import { useParams } from "react-router-dom";
+import useGameStore from "../../store/gameStore";
+import QuestionCard from '../questions/QuestionCard';
 
 export default function Game() {
   const params = useParams();
-  const [game, setGame] = useState(null);
-  const navigate = useNavigate();
+  const [selectedGame, setSelectedGame] = useState(null);
+  const { currentGame, fetchGame } = useGameStore(
+		useShallow((state) => ({
+			currentGame: state.currentGame,
+			fetchGame: state.fetchGame
+		}))
+	);
 
   useEffect(() => {
-    // async function fetchData() {
-    //   const id = params.id?.toString() || undefined;
-    //   if(!id) return;
-
-    //   const response = await fetch(`http://localhost:5050/games/66e1455b667b9a5463f6baec`).then((response) => {
-    //     console.log('response',response);
-    //     if (!response.ok) {
-    //       throw new Error(response.statusText, {cause: response});
-    //     }
-    //     return response.json();
-    //   }).catch((error) => {
-    //     console.log(error);
-    //   });
-    //   // if (!response.ok) {
-    //   //   const message = `An error has occurred: ${response.statusText}`;
-    //   //   console.error(message);
-    //   //   return;
-    //   // }
-
-    //   // const game = await response.json();
-    //   // if (!game) {
-    //   //   console.warn(`Game with id ${id} not found`);
-    //   //   navigate("/");
-    //   //   return;
-    //   // }
-    //   // setGame(game);
-    // }
-    // fetchData();
-    return;
-  }, [params.id, navigate]);
+    const id = params.id?.toString() || undefined;
+    fetchGame(id);
+    setSelectedGame(currentGame);
+  }, [params]);
 
   return (
-    <>
-      {game ? (<h3 className="text-lg font-semibold p-4">{game.gameName}</h3>) : (<h3>Not Game Found</h3>)}
-      {game ? game.questions.map((question, index) => {
-        return (<p key={index} className='pb-2 text-black'>{`${index + 1}.\t${question.question}`}</p>);
-      }) : null}
-    </>
+    <div>
+      {selectedGame ? (<h3 className="text-lg font-semibold p-4">{selectedGame.gameName}</h3>) : (<h3>Not Game Found</h3>)}
+      <ul>
+        {selectedGame ? selectedGame.questions.map((question, index) => {
+          return (<li key={index} className='pb-2 pl-4'>{`${index + 1}.\t${question.question}`}</li>);
+        }) : null}
+      </ul>
+    </div>
   );
 }

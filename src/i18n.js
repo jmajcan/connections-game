@@ -1,6 +1,6 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-import GAME_JSON from '../public/locale/game.json'
+import GAME_JSON from './assets/locale/game.json'
 
 i18n.use(initReactI18next).init({
  resources: {

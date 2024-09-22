@@ -1,20 +1,22 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
-import { fetchGames } from "../../api/GameService";
+import { useShallow } from 'zustand/react/shallow'
+import useGameStore from '../../store/gameStore';
 import GameCard from "./GameCard";
 
 export default function GameList() {
 	const [games, setGames] = useState([]);
+	const { allGames, fetchAllGames } = useGameStore(
+		useShallow((state) => ({
+			allGames: state.allGames,
+			fetchAllGames: state.fetchAllGames
+		}))
+	);
 
 	useEffect(() => {
-		const getGames = async () => {
-			const response = await fetchGames();
-			setGames(response);
-			return response;
-		}
-		getGames();
+		fetchAllGames();
+		setGames(allGames);
 	}, []);
-
 
 	// This method will map out the records on the table
 	const gamesList = () => {
