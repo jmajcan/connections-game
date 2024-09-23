@@ -4,7 +4,7 @@ import { useShallow } from 'zustand/react/shallow'
 import useGameStore from '../../store/gameStore';
 import GameCard from "./GameCard";
 
-export default function GameList() {
+export default function GameGrid() {
 	const [games, setGames] = useState([]);
 	const { allGames, fetchAllGames, resetCurrentGame } = useGameStore(
 		useShallow((state) => ({
@@ -15,7 +15,7 @@ export default function GameList() {
 	);
 
 	useEffect(() => {
-		// resetCurrentGame();
+		resetCurrentGame();
 		fetchAllGames();
 	}, []);
 

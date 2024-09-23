@@ -7,7 +7,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Game from "./components/games/Game";
-import GameList from "./components/games/GameList";
+import GameGrid from "./components/games/GameGrid";
 import './i18n.js'
 
 const router = createBrowserRouter([
@@ -17,7 +17,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <GameList />,
+        element: <GameGrid />,
       },
     ],
   },
