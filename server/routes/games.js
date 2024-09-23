@@ -11,7 +11,6 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
-  console.log('res', res);
 
   let collection = await db.collection("bonded");
   let query = {_id: new ObjectId(req.params.id)};

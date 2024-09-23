@@ -1,9 +1,8 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import useGameStore from "./gameStore";
+import useGameStore from "./store/gameStore";
 import { useEffect } from "react";
 import Footer from "./components/Footer";
-
 import './App.css';
 
 const App = () => {

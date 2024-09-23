@@ -8,7 +8,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        soulSearch: {
+        cupidsCards: {
           primary: "#fb6f92",
           secondary: "#ff8fab",
           accent: "#ffb3c6",
@@ -54,8 +54,13 @@ export default {
         },
         primary: '#1BAD69',
         secondary: '#2C5843',
-        accent: '#fcf7e2',
+        accent: '#EAEAEA',
         neutral: '#101715',
+        light: {
+          100: '#f2f2f2',
+          200: '#EAEAEA',
+          300: '#C8C8C8',
+        },
         info: '#321CAD',
         success: '#2cc692',
         warning: '#e3b505',
@@ -66,7 +71,7 @@ export default {
   daisyui: {
     themes: [
       {
-        soulSearch: {
+        cupidsCards: {
           "primary": "#fb6f92",
           "secondary": "#ff8fab",
           "accent": "#ffb3c6",
